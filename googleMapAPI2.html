@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Maps JavaScript API v3 Example: Geocoding Simple</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+    </style>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC1qV4AS7bjTPtqF1KkCX7wF0r3vvnJdmQ&sensor=false">
+	  </script>
+    <script>
+      var geocoder; // Adds search field
+      var map;
+      function initialize() {
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(40.768024, -73.963866);
+        var myOptions = {
+        zoom: 19, //higher number greater zoom 0-21
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.SATELLITE
+        //https://developers.google.com/maps/documentation/javascript/maptypes
+      }
+      map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      map.setTilt(45); //available with satellite or hybrid views
+    }
+
+  function codeAddress() {
+    // takes the data from the text field and relocates the map accordingly
+    var address = document.getElementById("address").value;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map, 
+            position: results[0].geometry.location
+        });
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+</script>
+</head>
+<body onload="initialize()">
+  <div>
+    <input id="address" type="textbox" value="Hunter College, NY">
+    <input type="button" value="Geocode" onclick="codeAddress()">
+  </div>
+<div id="map_canvas" style="height:90%;top:30px"></div>
+</body>
+</html>

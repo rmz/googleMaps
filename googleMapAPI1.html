@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example of Google Maps JS API</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <!-- This example uses Google Maps JavaScript API v3
+    https://developers.google.com/maps/documentation/javascript/
+    This Example is here:
+    https://developers.google.com/maps/documentation/javascript/tutorial
+    Click and go Google Maps Embed API are available as well:
+    https://developers.google.com/maps/documentation/embed/start
+    -->
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { width: 100%; height: 100% }
+    </style>
+    <!-- the src below requires an API key on this page click "GET A KEY" BUTTON:
+    https://developers.google.com/maps/documentation/javascript/ -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1qV4AS7bjTPtqF1KkCX7wF0r3vvnJdmQ&sensor=false">
+    //With a sensor is meant some way to determine your present location
+    // for example, if you have a GPS in your device.
+    </script>
+    <script>
+      function initialize() {
+        var myOptions = {
+          // find latitude and longitude:
+          // http://itouchmap.com/latlong.html
+          center: new google.maps.LatLng(37.740898, -122.419485),
+          zoom: 18, //zoom levels: 0-21
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+          // MapTyepId values: ROADMAP, SATELLITE, HYBRID, TERRAIN
+          // https://developers.google.com/maps/documentation/javascript/maptypes
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            myOptions);
+      }
+    </script>
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas"></div>
+  </body>
+</html>
