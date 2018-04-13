@@ -36,22 +36,41 @@
               }
            });
 
+           //bus stop popup
            var contentString = '<div id="content">'+
                //'<div id="siteNotice">'+
                //'</div>'+
                '<h1 id="firstHeading" class="firstHeading">Mirai Mizue</h1>'+
-               '<div id="bodyContent">'+
+               //'<div id="bodyContent">'+
                '<p>Abstract Animation, <a href="https://vimeo.com/user5743956" style="color:grey">'+
                'view more</a> '+
                '</p>'+
                '<iframe style="width:300; height:250; margin:auto" src="https://www.youtube.com/embed/GFijpZdt6Lg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>'+
                '</iframe>'+
-               '</div>'+
+               //'</div>'+
                '</div>';
 
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
+
+        //Castro's Popup
+        var contentString2 = '<div id="content">'+
+            //'<div id="siteNotice">'+
+            //'</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Processing Dude</h1>'+
+            //'<div id="bodyContent">'+
+            '<p>Code Train, <a href="https://vimeo.com/user5743956" style="color:grey">'+
+            'view more</a> '+
+            '</p>'+
+            '<iframe style="width:300; height:250; margin:auto" src="https://www.youtube.com/embed/yXT1ElMEkW8" frameborder="10" allow="autoplay; encrypted-media" allowfullscreen>'+
+            '</iframe>'+
+            //'</div>'+
+            '</div>';
+
+     var infowindow2 = new google.maps.InfoWindow({
+       content: contentString2
+     });
 
         // Set up the markers on the map
         var cafeMarker = new google.maps.Marker({
@@ -76,6 +95,9 @@
         });
         busMarker.addListener('click', function() {
           infowindow.open(map, busMarker);
+        });
+        bankMarker.addListener('click', function() {
+          infowindow2.open(map, bankMarker);
         });
       }
 
